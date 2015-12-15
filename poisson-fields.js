@@ -149,7 +149,7 @@ async function makeImage(cb) {
 
     background.draw(0, 0, background.width / 5, background.height / 5);
 
-    var rotationAngle = _.random(0, 45);
+    var rotationAngle = _.random(-60, 60);
 
     var images = _.sample(candidates, _.random(1, 3));
     var imageSet = new SequentialImageSet(images)
