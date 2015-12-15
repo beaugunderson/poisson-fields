@@ -1,0 +1,4 @@
+out/*.png
+.env
+out.png
+test-images/
