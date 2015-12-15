@@ -160,10 +160,10 @@ async function makeImage(cb) {
     _.times(images.length, function () {
       var image = imageSet.image();
 
-      var MAX_SIZE = 150;
+      var maxSize = _.random(90, 150);
       var size = Math.max(image.width, image.height);
 
-      image.scale(MAX_SIZE / size);
+      image.scale(maxSize / size);
       image.rotate(rotationAngle);
 
       imageSet.increment();
