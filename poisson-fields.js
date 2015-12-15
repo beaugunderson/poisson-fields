@@ -23,6 +23,7 @@ var Bing = require('node-bing-api')({
 
 var FULLY_TRANSPARENT = 0;
 
+// TODO: move these to canvas-utilities?
 function getPixel(data, index) {
   var i = index * 4;
 
@@ -191,15 +192,7 @@ program
   .command('tweet')
   .description('Generate and tweet an image')
   .option('-r, --random', 'only post a percentage of the time')
-  .action(async function (options) {
-    if (options.random) {
-      if (_.percentChance(98)) {
-        console.log('Skipping...');
-
-        process.exit(0);
-      }
-    }
-
+  .action(botUtilities.randomCommand(async function () {
     makeImage(function (word, buffer) {
       var T = new Twit(botUtilities.getTwitterAuthFromEnv());
 
@@ -225,6 +218,6 @@ program
         console.log('TUWM OK');
       });
     });
-  });
+  }));
 
 program.parse(process.argv);
